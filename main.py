@@ -4,7 +4,6 @@ from flask_cors import CORS
 from flask import jsonify
 from joblib import  load
 
-
 # Create flask & cors instance 
 app = Flask(__name__)
 cors = CORS()
@@ -23,9 +22,11 @@ def home():
   args = request.args
   data= args.to_dict()
   #Get location from model prediction
-  label=clf.predict([[data.get("STUDBME1"),data.get("STUDBME2"),data.get("iot"),data.get("YME"),data.get("Miran"),data.get("CMP_LAB4"),data.get("CMP_LAB2")]])
+  
+  label=clf.predict([[data.get("StudBME1"),data.get("STUDBME2"),data.get("RehabLab"),data.get("CMP_LAB1"),data.get("CMP_LAB2"),data.get("CMP_LAB3"),data.get("CMP_LAB4"),data.get("Dalia_iphone"),data.get("Dalialab"),data.get("Mikasa"),data.get("Nada"),data.get("YME")]])
 
   locations.append(label[0])
+  print('location: ', locations[-1])
   return jsonify(label=label[0])
     
 # Serve Get Request from React Server 

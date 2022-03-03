@@ -6,8 +6,8 @@ WiFiClient client;
 HTTPClient http;
 
 // please change savedSize as you change the size of savedNetworks[] accordingly
-int savedSize = 7;
-String savedNetworks[] = {"STUDBME1", "STUDBME2", "iot", "YME", "Miran", "CMP_LAB4", "CMP_LAB2"};
+int savedSize = 12;
+String savedNetworks[] = {"StudBME1", "STUDBME2", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Dalia_iphone", "Dalialab", "Mikasa", "Nada", "YME"};
 
 void connect_wifi()
 {
@@ -65,7 +65,7 @@ void loop() {
       for (int j = 0; j < foundNetworks; j++) {
         if (savedNetworks[i] == WiFi.SSID(j)) {
           networkNames[i] = WiFi.SSID(j);
-          networkStrength[i] = WiFi.RSSI(j) + 100;
+          networkStrength[i] = WiFi.RSSI(j);
           found = true;
           break;
         }
@@ -76,7 +76,8 @@ void loop() {
       }
     }
 
-    String urlString = "http://192.168.1.18:8090/data?";
+//    String urlString = "http://192.168.1.18:8/090/data?";
+    String urlString = "http://172.28.130.216:8090/data?";
     for (int i = 0; i < savedSize; i++) {
       urlString += networkNames[i] + "=" + networkStrength[i] + "&";
     }
