@@ -15,6 +15,11 @@ virtualenv venv
 
 ## 2- Run main.py to run server 
 
+> install requirements first : 
+> ```
+> python -m pip install -r requirements.txt
+> ```
+
 ```
 python main.py
 ```
@@ -22,6 +27,7 @@ python main.py
 
 ```
 npm init
+npm install
 npm start
 ```
 ## Testing APIS
