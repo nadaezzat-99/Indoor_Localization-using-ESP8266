@@ -8,12 +8,24 @@ HTTPClient http;
 // please change savedSize as you change the size of savedNetworks[] accordingly
 int savedSize = 12;
 String savedNetworks[] = {"StudBME1", "STUDBME2", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Dalia_iphone", "Dalialab", "Mikasa", "Nada", "YME"};
+//String savedNetworks[] = {"StudBME1", "STUDBME2", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Dalia iphone", "Dalialab", "Mikasa", "Nada", "YME"};
+
 
 void connect_wifi()
 {
   delay(100);
-  char * username = "STUDBME2";
-  char * password = "BME2Stud";
+  char * username = "KhaledDodo";
+  char * password = "veto939599";
+//  char * username = "youssef";
+//  char * password = "12345678";
+//  char * username = "STUDBME2";
+//  char * password = "BME2Stud";
+//  char * username = "STUDBME1";
+//  char * password = "BME1Stud";
+//  char * username = "Marwa";
+//  char * password = "alipixels";
+//  char * username = "Mikasa";
+//  char * password = "mnnymnny";
   Serial.print("Connecting to Wifi: ");
   Serial.println(username);
   WiFi.begin(username, password);
@@ -72,12 +84,13 @@ void loop() {
       }
       if (!found) {
         networkNames[i] = savedNetworks[i];
-        networkStrength[i] = 0;
+        networkStrength[i] = -100;
       }
     }
-
-//    String urlString = "http://192.168.1.18:8/090/data?";
-    String urlString = "http://172.28.130.216:8090/data?";
+    
+    String urlString = "http://192.168.1.105:8090/data?";
+//    String urlString = "http://172.28.131.69:8090/data?";
+    // 172.28.129.147
     for (int i = 0; i < savedSize; i++) {
       urlString += networkNames[i] + "=" + networkStrength[i] + "&";
     }
@@ -100,5 +113,5 @@ void loop() {
   {
     Serial.println("WiFi Disconnected");
   }
-  delay(5000);
+  delay(2000);
 }

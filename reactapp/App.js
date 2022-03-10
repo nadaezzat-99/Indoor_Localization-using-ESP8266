@@ -21,7 +21,10 @@ export default function App() {
   //http://172.28.129.147:8090/mapping
  async function locationHandler()
   {//http://127.0.0.1:5000/ SERVER
-    let data= await fetch ("http://192.168.1.18:8090/mapping")
+    // let data= await fetch ("http:// 192.168.241.168:8090/mapping")
+    // let data= await fetch ("http://172.28.131.69:8090/mapping")
+    let data= await fetch ("http://192.168.1.105:8090/mapping")
+
     let finalData=await data.json()
     console.log(finalData.label)
     // setLoc(finalData.labelone)
@@ -78,9 +81,9 @@ export default function App() {
       }
 
   }
-  if (array_track.length>53)
+  if (array_track.length>80)
   {
-    last_updated= array_track.slice(2,51)
+    last_updated= array_track.slice(2,75)
   }
 
   function track_mode()
