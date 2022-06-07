@@ -15,7 +15,7 @@ HTTPClient http;
 #define WIFI_SSID "STUDBME2"
 #define WIFI_PASSWORD "BME2Stud"
 
-String saved_networks[] = {"StudBME1", "STUDBME2", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Mikasa", "Nada", "Dalia iphone", "Dalialab","YME"};
+String saved_networks[] = {"STUDBME1", "STUDBME2", "STUDBME3", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Mikasa", "Nada", "Mariem", "Alaa", "C_H_S_4", "tarek"};
 
 int flag ;
 

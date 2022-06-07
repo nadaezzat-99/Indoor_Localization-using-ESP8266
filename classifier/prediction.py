@@ -6,12 +6,16 @@ import pandas as pd
 from sklearn import metrics 
 from joblib import dump, load
 
-col_names = ['StudBME1', 'STUDBME2', 'RehabLab', 'CMP_LAB1', 'CMP_LAB2', 'CMP_LAB3', 'CMP_LAB4', 'Dalia_iphone','Dalialab','Mikasa','Nada','YME', 'location'] # CSV Header
+{"STUDBME1", "STUDBME2", "STUDBME3", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Mikasa", "Nada", "Mariem", "Alaa", "C_H_S_4", "tarek"};
+
+col_names = ["STUDBME1", "STUDBME2", "STUDBME3", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Mikasa", "Nada", "Mariem", "Alaa", "C_H_S_4", "tarek","location"] # CSV Header
 # load dataset
-data = pd.read_csv("task1_data.csv", header=None, names=col_names,skiprows=1)
+#data = pd.read_csv("data.csv", header=None, names=col_names,skiprows=1)
+data = pd.read_csv("all_data.csv", header=None, names=col_names,skiprows=1,encoding='utf-8')
+print(data)
 
 #split dataset in features and target variable
-feature_cols = ['StudBME1', 'STUDBME2', 'RehabLab', 'CMP_LAB1', 'CMP_LAB2', 'CMP_LAB3', 'CMP_LAB4', 'Dalia_iphone','Dalialab','Mikasa','Nada','YME']
+feature_cols = ["STUDBME1", "STUDBME2", "STUDBME3", "RehabLab", "CMP_LAB1", "CMP_LAB2", "CMP_LAB3", "CMP_LAB4", "Mikasa", "Nada", "Mariem", "Alaa", "C_H_S_4", "tarek"]
 X = data[feature_cols] # Features
 y = data.location # Target variable
 
@@ -30,15 +34,17 @@ y_pred = clf.predict(X_test)
 
 # using metrics module for accuracy calculation
 print("ACCURACY OF THE MODEL: ", metrics.accuracy_score(y_test, y_pred))
-dump(clf, 'model.joblib')
+dump(clf, 'model2.joblib')
+l=clf.predict([[45, 21, 55, 19,45,38,12,45,33,44,70,45,45,38]])
+print(l[0])
 
-def prediction (StudBME1, STUDBME2, RehabLab, iot, CMP_LAB1, CMP_LAB2, CMP_LAB3, CMP_LAB4, Dalia_iphone, Dalialab, Mikasa, Nada, YME):
+def prediction (StudBME1, STUDBME2, STUDBME3, RehabLab, CMP_LAB1, CMP_LAB2, CMP_LAB3, CMP_LAB4, Mikasa, Nada, Mariem, Alaa, C_H_S_4, tarek):
 
    # create the one-dimensional array
-   data = [StudBME1, STUDBME2, RehabLab, iot, CMP_LAB1, CMP_LAB2, CMP_LAB3, CMP_LAB4, Dalia_iphone, Dalialab, Mikasa, Nada, YME]
+   data = [StudBME1, STUDBME2, STUDBME3, RehabLab, CMP_LAB1, CMP_LAB2, CMP_LAB3, CMP_LAB4, Mikasa, Nada, Mariem, Alaa, C_H_S_4, tarek]
    # create the Series
-   data = pd.Series(data)
-   n=clf.predict([[39, 41, 36, 14, 0, 44, 44, 39, 41, 36, 14, 0]])
+   print(data)
+   data = pd.Series(data)   
    n=clf.predict(data)
-   print(n[0])
+   print(n)
    return(n[0])
